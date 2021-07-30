@@ -1,5 +1,5 @@
 .word{
-    max-width: 300px;
+    max-width: 320px;
     height: 50px;
     border:3px solid red;
     border-radius: 5px;
@@ -8,4 +8,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 3vmin);
+}
+.opened-word{
+    background-color:cadetblue;
 }
