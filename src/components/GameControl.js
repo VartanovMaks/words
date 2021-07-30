@@ -1,16 +1,18 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
-function Footer(props) {
+function GameControl() {
     return (
+        <div>
             <Container>
                 <Row className="justify-content-sm-center">
-                    <h5>Here will be status information</h5>
+                <Button variant="secondary" size="lg" >Открыть всё</Button>
                 </Row>  
             </Container>
+        </div>
     );
 }
 
-export default Footer;
+export default GameControl;
