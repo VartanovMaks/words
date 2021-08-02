@@ -8,11 +8,13 @@ import GameField from './GameField';
 
 function SelectTask() {
     const [task, setTask] = useState(game[0]);
-
+    
     function categoryChoosen({target}) {
-        console.log(target.selectedIndex);
+        console.log(target[target.selectedIndex]);
+        // target[target.selectedIndex].disabled = true;
+        setTask(game[target.selectedIndex]);
     }
-
+   
     return (
         <div>
             <Container>
@@ -21,17 +23,17 @@ function SelectTask() {
                 </Row>
                 <Row className="justify-content-sm-center">
                     <Col md="auto" sm="auto">
-                    <Form.Group controlId="category">
-                        <Form.Control as="select" onChange={categoryChoosen}  >
-                            {
-                                game.map((item,index) => <option key={index}>{item.category}</option>)
-                            }
-                        </Form.Control>
+                        <Form.Group controlId="category">
+                            <Form.Control as="select" onChange={categoryChoosen}  >
+                                {
+                                    game.map((item,index) => <option key={index} >{item.category}</option>)
+                                }
+                            </Form.Control>
                         </Form.Group>
                     </Col>
                 </Row>
-            </Container>
-            <GameField/>
+            </Container >
+            <GameField task={task.words}/>
         </div>
     );
 }
