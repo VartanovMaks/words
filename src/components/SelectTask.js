@@ -33,7 +33,7 @@ function SelectTask() {
                     </Col>
                 </Row>
             </Container >
-            <GameField task={task.words}/>
+            <GameField words={task.words}/>
         </div>
     );
 }
