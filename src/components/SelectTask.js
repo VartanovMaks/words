@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import game from '../data';
 import GameField from './GameField';
+import './stylesCards.css'
 
 function SelectTask() {
     const [task, setTask] = useState(game[0]);
