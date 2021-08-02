@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function GameField({words}) {
+function Cards({words}) {
     
     function openWord(word,number){
         const wordCard = document.getElementById(`Word${number+1}`);
@@ -28,4 +28,4 @@ function GameField({words}) {
     );
 }
 
-export default GameField;
+export default Cards;
