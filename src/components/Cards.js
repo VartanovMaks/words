@@ -3,22 +3,30 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function Cards({words, wordsCount}) {
+function Cards({words, openedWordIndexes, wordsCount}) {
     
+    function isWordOpened(word) {
+        let index = words.findIndex(item => item === word);
+        if (openedWordIndexes.includes(index)) return true;
+        return false;
+    }
+
     return (
         <Container>
             <Row className="justify-content-md-center">
                 {
-                    words.map((item, index) => 
-                        <Col xs={12} sm={6} md={6} lg={4} >
-                            <div className="word" 
-                                id={`Word${index+1}`} 
-                                onClick={()=>wordsCount(item,index+1)} 
+                    words.map((item, index) =>
+                         {let isOpened= isWordOpened(item); 
+                            return (
+                            <Col xs={12} sm={6} md={6} lg={4}>
+                            <div className={isOpened ? "opened-word":"word"} 
+                                id={`Word${index}`} 
+                                onClick={()=>wordsCount(index)} 
                                 key={Math.random()}>
-                                    {`Слово ${index+1}`}
+                                    {isOpened ? item :`Слово ${index+1}`}
                             </div>
-                        </Col>
-                    )
+                        </Col>)
+                        })
                 }   
             </Row>
         </Container>
