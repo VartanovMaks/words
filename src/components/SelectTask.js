@@ -16,9 +16,9 @@ function SelectTask({tasks, onSelectTask}) {
                 <Row className="justify-content-sm-center">
                     <Col md="auto" sm="auto">
                         <Form.Group controlId="category">
-                            <Form.Control as="select" onChange={onSelectTask}  >
+                            <Form.Control as="select" onChange={onSelectTask}>
                                 {
-                                    tasks.map((item,index) => <option key={index} >{item.category}</option>)
+                                    tasks.map((item,index) => <option key={index}>{item.category}</option>)
                                 }
                             </Form.Control>
                         </Form.Group>

@@ -10,14 +10,26 @@ function Body(props) {
     
     function categoryChoosen({target}) {
         console.log(target);
-        target[target.selectedIndex].disabled = true;
-        setTaskIndex(target.selectedIndex);
+        let index = target.selectedIndex;
+        target[index].disabled = true;
+        target[index].hidden = true;
+        // if all tasks are opened disable further select
+        if ( Array.from(target).findIndex(el => el.disabled === false ) === -1) target.disabled=true;
+            
+        setTaskIndex(index);
     }
-    
+
+    function openWord(word,number){
+        console.log(word,' ', number);
+        const wordCard = document.getElementById(`Word${number}`);
+        wordCard.className = wordCard.className + ' ' + 'opened-word';
+        wordCard.innerText = word;
+    }
+
     return (
         <div>
             <SelectTask tasks = {tasks} onSelectTask = {categoryChoosen}/>
-            <Cards words={tasks[taskIndex].words} />
+            <Cards words={tasks[taskIndex].words} wordsCount = {openWord} />
             <GameControl/>
         </div>
     );
