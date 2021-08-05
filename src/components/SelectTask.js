@@ -11,14 +11,14 @@ function SelectTask({tasks, onSelectTask}) {
         <div>
             <Container>
                 <Row className="justify-content-sm-center">
-                    <Form.Label>Выбирайте категорию</Form.Label>
+                    <Form.Label>Выбирайте вопрос</Form.Label>
                 </Row>
                 <Row className="justify-content-sm-center">
                     <Col md="auto" sm="auto">
                         <Form.Group controlId="category">
                             <Form.Control as="select" onChange={onSelectTask}>
                                 {
-                                    tasks.map((item,index) => <option key={index}>{item.category}</option>)
+                                    tasks.map((item,index) => <option key={index}>{item.task}</option>)
                                 }
                             </Form.Control>
                         </Form.Group>

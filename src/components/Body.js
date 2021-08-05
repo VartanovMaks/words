@@ -5,39 +5,39 @@ import Cards from './Cards';
 import game from '../data';
 
 function Body(props) {
-    const [tasks, setTasks] = useState(game);
-    const [taskIndex, setTaskIndex] = useState(0);
-    const [openedWords, setOpenedWords] = useState([]);
+    const [tasksArray, setTasksArray] = useState(game);
+    const [selectedTaskIndex, setSelectedTaskIndex] = useState(0);
+    const [openedWordsIndexes, setOpenedWordsIndexes] = useState([]);
     
-    function categoryChoosen({target}) {
+    function selectTask({target}) {
         let index = target.selectedIndex;
-        target[index].disabled = true;
+        target[index].disabled = true;  
         target[index].hidden = true;
         // if all tasks are opened disable further select
-        if ( Array.from(target).findIndex(el => el.disabled === false ) === -1) target.disabled=true;
+        if ( Array.from(target).findIndex(el => !el.disabled) === -1) target.disabled=true;
         
-        setOpenedWords([]);
-        setTaskIndex(index);
+        setOpenedWordsIndexes([]);
+        setSelectedTaskIndex(index);
     }
 
     function openWord(number){
-        if(!openedWords.includes(number)){ 
-            const arr = openedWords.slice();
+        if(!openedWordsIndexes.includes(number)){ 
+            const arr = openedWordsIndexes.slice();
             arr.push(number);
-            setOpenedWords(arr);
+            setOpenedWordsIndexes(arr);
         }
     }
     function openAll() {
-        let arr = tasks[taskIndex].words.map((item,index) => index);
-        let score = tasks[taskIndex].words.length - openedWords.length;
-        setOpenedWords(arr);
+        let arr = tasksArray[selectedTaskIndex].words.map((item,index) => index);
+        let score = tasksArray[selectedTaskIndex].words.length - openedWordsIndexes.length;
+        setOpenedWordsIndexes(arr);
         alert(`Очки : ${score}`);
     }
 
     return (
         <div>
-            <SelectTask tasks = {tasks} onSelectTask = {categoryChoosen}/>
-            <Cards words={tasks[taskIndex].words} openedWordIndexes={openedWords} wordsCount = {openWord} />
+            <SelectTask tasks = {tasksArray} onSelectTask = {selectTask}/>
+            <Cards words={tasksArray[selectedTaskIndex].words} openedWordIndexes={openedWordsIndexes} wordsCount = {openWord} />
             <GameControl openAllWords={openAll}/>
         </div>
     );
