@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useState} from 'react';
 import game from '../data'
 
 export const GameContext = createContext();
@@ -8,6 +8,7 @@ const GameContextProvider = ({children}) => {
     const [tasksArray, setTasksArray] = useState(game);
     const [selectedTaskIndex, setSelectedTaskIndex] = useState(0);
     const [openedWordsIndexes, setOpenedWordsIndexes] = useState([]);
+    const [score, setScore] = useState(0);
 
     function selectTask({target}) {
         let index = target.selectedIndex;
@@ -20,22 +21,26 @@ const GameContextProvider = ({children}) => {
         setSelectedTaskIndex(index);
     }
 
-    function openWord(number){
-        if(!openedWordsIndexes.includes(number)){ 
+    function openWord(index){
+        if(!openedWordsIndexes.includes(index)){ 
             const arr = openedWordsIndexes.slice();
-            arr.push(number);
+            arr.push(index);
             setOpenedWordsIndexes(arr);
         }
     }
    
     function openAllWords() {
         let arr = tasksArray[selectedTaskIndex].words.map((item,index) => index);
-        let score = tasksArray[selectedTaskIndex].words.length - openedWordsIndexes.length;
+        let openedWords = tasksArray[selectedTaskIndex].words.length - openedWordsIndexes.length;
         setOpenedWordsIndexes(arr);
-        alert(`Очки : ${score}`);
+        alert(`Очки : ${openedWords}`);
+        setScore(score + openedWords);
+    }
+    function resetScore (){
+        setScore(0);
     }
 
-    return (
+        return (
         <GameContext.Provider 
         value={{
             tasksArray,
@@ -44,7 +49,9 @@ const GameContextProvider = ({children}) => {
             selectTask,
             openedWordsIndexes,
             openWord,
-            openAllWords
+            openAllWords,
+            score,
+            resetScore
         }}>
             {children}
         </GameContext.Provider>

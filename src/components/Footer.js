@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { GameContext } from './ContextComponent';
 
-function Footer(props) {
+function Footer() {
+
+    const {
+        score
+    } = useContext(GameContext);
+
     return (
             <Container>
                 <Row className="justify-content-sm-center">
-                    <h5>Here will be status information</h5>
+                    <h5>Вы набрали {score} очков</h5>
                 </Row>  
             </Container>
     );
