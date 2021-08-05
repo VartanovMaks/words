@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {GameContext} from './ContextComponent';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-function GameControl({openAllWords}) {
+function GameControl() {
+    const {
+        openAllWords
+    } = useContext(GameContext);
+
     return (
         <div>
             <Container>

@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {GameContext} from './ContextComponent';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import './stylesCards.css'
 
-function SelectTask({tasks, onSelectTask}) {
-   
+function SelectTask() {
+    const {
+        selectTask,
+        tasksArray
+    } = useContext(GameContext);
+    
     return (
         <div>
             <Container>
@@ -16,9 +21,9 @@ function SelectTask({tasks, onSelectTask}) {
                 <Row className="justify-content-sm-center">
                     <Col md="auto" sm="auto">
                         <Form.Group controlId="category">
-                            <Form.Control as="select" onChange={onSelectTask}>
+                            <Form.Control as="select" onChange={selectTask}>
                                 {
-                                    tasks.map((item,index) => <option key={index}>{item.task}</option>)
+                                    tasksArray.map((item,index) => <option key={index}>{item.task}</option>)
                                 }
                             </Form.Control>
                         </Form.Group>
