@@ -22,7 +22,7 @@ function Word ({word,index}) {
             <div className={isOpened ? "opened-word":"word"} 
                 id={`Word${index}`} 
                 onClick={()=>openWord(index)} 
-                key={Math.random()}>
+            >
                     {isOpened ? word :`Слово ${index+1}`}
             </div>
     )

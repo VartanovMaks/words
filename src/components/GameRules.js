@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import { GameContext } from './ContextComponent';
 
 function GameRules() {
 

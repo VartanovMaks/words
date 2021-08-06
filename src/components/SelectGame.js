@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {Row,Col, Container, Form} from 'react-bootstrap';
-import { GameContext } from './ContextComponent';
+import Game from './Game';
+import gamesBase from '../data'
 
 function SelectGame() {
-
-
+    
     return (
             <Container>
                 <Row className="justify-content-sm-center">
@@ -13,28 +13,12 @@ function SelectGame() {
                 <Form.Group as={Row} className="my-3">
                     <Form.Label as="legend" column sm={4} />
                     <Col sm={8}>
-                        <Form.Check 
-                            type="radio"
-                            label="Новый год 2020"
-                            name="radioSelectGame"
-                            id="Game1"
-                            className="my-3"
-                        />
-                        <Form.Check 
-                            type="radio"
-                            label="Корпоратив декабрь "
-                            name="radioSelectGame"
-                            id="Game2"
-                            className="my-3"
-                        />
-                        <Form.Check 
-                            type="radio"
-                            label=" Ясик август 202 "
-                            name="radioSelectGame"
-                            id="Game3"
-                            className="my-3"
-                        />
-                    </Col>
+                        {
+                         gamesBase.map((item,index)=> 
+                            <Game gameName={item.name} index={index} key={index+item.name}/>
+                            )   
+                        }
+                        </Col>
                 </Form.Group>
             </Container>
     );

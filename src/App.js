@@ -5,7 +5,7 @@ import GameRules from './components/GameRules'
 import SelectGame from './components/SelectGame'
 import Header from './components/Header';
 import GameContextProvider from './components/ContextComponent'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
 function App() {
   
@@ -26,6 +26,9 @@ function App() {
                 </Route>
                 <Route path='/rules'>
                   <GameRules />
+                </Route>
+                <Route>
+                  <Redirect to='/select-game' />
                 </Route>
               </Switch>
             </div>

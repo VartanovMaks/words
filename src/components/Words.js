@@ -14,15 +14,15 @@ function Words() {
     
     return (
         <Container>
-            <Row className="justify-content-md-center">
+            { !!tasksArray.length && <Row className="justify-content-md-center">
                 {
                     tasksArray[selectedTaskIndex].words.map((item, index) => 
-                    <Col xs={12} sm={6} md={6} lg={4} className="my-3">
+                    <Col xs={12} sm={6} md={6} lg={4} className="my-3" key={Math.random()}>
                         <Word word={item} index={index}/>
                     </Col>
                     )
                 }   
-            </Row>
+            </Row>}
         </Container>
     );
 }

@@ -1,11 +1,10 @@
 import React, {createContext, useState} from 'react';
-import game from '../data'
 
 export const GameContext = createContext();
 
 const GameContextProvider = ({children}) => {
     
-    const [tasksArray, setTasksArray] = useState(game);
+    const [tasksArray, setTasksArray] = useState([]);
     const [selectedTaskIndex, setSelectedTaskIndex] = useState(0);
     const [openedWordsIndexes, setOpenedWordsIndexes] = useState([]);
     const [score, setScore] = useState(0);
@@ -22,6 +21,7 @@ const GameContextProvider = ({children}) => {
     }
 
     function openWord(index){
+        
         if(!openedWordsIndexes.includes(index)){ 
             const arr = openedWordsIndexes.slice();
             arr.push(index);
@@ -30,6 +30,7 @@ const GameContextProvider = ({children}) => {
     }
    
     function openAllWords() {
+        if (!tasksArray.length) return;
         let arr = tasksArray[selectedTaskIndex].words.map((item,index) => index);
         let openedWords = tasksArray[selectedTaskIndex].words.length - openedWordsIndexes.length;
         setOpenedWordsIndexes(arr);
@@ -48,6 +49,7 @@ const GameContextProvider = ({children}) => {
             selectedTaskIndex,
             selectTask,
             openedWordsIndexes,
+            setOpenedWordsIndexes,
             openWord,
             openAllWords,
             score,
