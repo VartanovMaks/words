@@ -1,7 +1,12 @@
 
-import Nav from 'react-bootstrap/Nav';
 import {GameContext} from './ContextComponent';
 import {useContext} from 'react';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+import { Link } from 'react-router-dom';
 
 function Header() {
 
@@ -10,21 +15,24 @@ function Header() {
   } = useContext(GameContext);
 
     return (
-      <div>
-        <h3 className="text-center mt-4 mb-4"> Игра 5 слов</h3>
-        <Nav variant="pills" defaultActiveKey="/home" className="justify-content-center">
-            <Nav.Item>
-                <Nav.Link href="/home" onClick={resetScore}>Выбрать игру</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="link-1">Правила игры</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="link-2">Регистрация</Nav.Link>
-            </Nav.Item>
-        </Nav>
-    
-      </div>
+      <header>
+        <h3 className="text-center my-3"> Игра 5 слов</h3>
+        <Container className="mb-3">
+            <Row className="justify-content-around">
+                <Col md="auto" sm="auto">
+                    <Link to='/select-game'>
+                        <Button variant="primary" className="mx-2">Выбрать игру</Button>
+                    </Link>
+                    <Link to='/play'>
+                        <Button variant="warning" className="mx-2">Игра</Button>
+                    </Link>
+                    <Link to='/rules'>
+                        <Button variant="info" className="mx-2">Правила игры</Button>
+                    </Link>
+                </Col>
+            </Row>
+        </Container>
+      </header>
     );
   }
   

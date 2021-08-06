@@ -10,7 +10,7 @@ function Footer() {
     } = useContext(GameContext);
 
     return (
-            <Container>
+            <Container className="mt-4">
                 <Row className="justify-content-sm-center">
                     <h5>Вы набрали {score} очков</h5>
                 </Row>  

@@ -11,7 +11,7 @@ function GameControl() {
 
     return (
         <div>
-            <Container>
+            <Container className="my-3">
                 <Row className="justify-content-sm-center">
                 <Button variant="secondary" size="lg" onClick={openAllWords}>Открыть всё</Button>
                 </Row>  

@@ -17,7 +17,7 @@ function Words() {
             <Row className="justify-content-md-center">
                 {
                     tasksArray[selectedTaskIndex].words.map((item, index) => 
-                    <Col xs={12} sm={6} md={6} lg={4}>
+                    <Col xs={12} sm={6} md={6} lg={4} className="my-3">
                         <Word word={item} index={index}/>
                     </Col>
                     )
