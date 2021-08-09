@@ -8,6 +8,7 @@ const GameContextProvider = ({children}) => {
     const [selectedTaskIndex, setSelectedTaskIndex] = useState(0);
     const [openedWordsIndexes, setOpenedWordsIndexes] = useState([]);
     const [score, setScore] = useState(0);
+    const [games, setGames] = useState([]);
 
     function selectTask({target}) {
         let index = target.selectedIndex;
@@ -53,7 +54,9 @@ const GameContextProvider = ({children}) => {
             openWord,
             openAllWords,
             score,
-            resetScore
+            resetScore,
+            games, 
+            setGames
         }}>
             {children}
         </GameContext.Provider>
