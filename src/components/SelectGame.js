@@ -25,7 +25,7 @@ function SelectGame() {
                 <Row className="justify-content-sm-center">
                     <h3>Выберите игру</h3>
                 </Row>
-                { games.length && (
+                { !!games.length && (
                 <Form.Group as={Row} className="my-3">
                     <Form.Label as="legend" column sm={4} />
                     <Col sm={8}>

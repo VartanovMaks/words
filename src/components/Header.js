@@ -15,13 +15,16 @@ function Header() {
             <Row className="justify-content-around">
                 <Col md="auto" sm="auto">
                     <Link to='/select-game'>
-                        <Button variant="primary" className="mx-2">Выбрать игру</Button>
+                        <Button variant="primary" className="mx-2 my-2">Выбрать игру</Button>
                     </Link>
                     <Link to='/play'>
-                        <Button variant="warning" className="mx-2">Игра</Button>
+                        <Button variant="warning" className="mx-2 my-2">Игра</Button>
                     </Link>
                     <Link to='/rules'>
-                        <Button variant="info" className="mx-2">Правила игры</Button>
+                        <Button variant="info" className="mx-2 my-2">Правила игры</Button>
+                    </Link>
+                    <Link to='/create-game'>
+                        <Button variant="success" className="mx-2 my-2">Создать игру</Button>
                     </Link>
                 </Col>
             </Row>

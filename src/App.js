@@ -2,6 +2,7 @@ import './App.css';
 import Body from './components/Body';
 import Footer from './components/Footer';
 import GameRules from './components/GameRules'
+import GameCreate from './components/GameCreate'
 import SelectGame from './components/SelectGame'
 import Header from './components/Header';
 import GameContextProvider from './components/ContextComponent'
@@ -26,6 +27,9 @@ function App() {
                 </Route>
                 <Route path='/rules'>
                   <GameRules />
+                </Route>
+                <Route path='/create-game'>
+                  <GameCreate />
                 </Route>
                 <Route>
                   <Redirect to='/select-game' />
