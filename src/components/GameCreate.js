@@ -1,13 +1,14 @@
-import React, { useState, useRef} from 'react';
-import {Container, Button, Form } from 'react-bootstrap';
-import {Row,Col} from 'react-bootstrap';
+import React, {useRef, useState} from 'react';
+import {Container,InputGroup, Button, FormControl, Form } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
 
 function GameCreate() {
 
+const taskTitleInput=useRef();
+const taskInput=useRef();
+
 const [task, setTask] = useState([]);
 const [taskTitle, setTaskTitle] = useState('');
-
-const taskRef = useRef();
 
 const uploadTask = async () => {
     try{
@@ -29,16 +30,16 @@ const uploadTask = async () => {
     }
   }
 
-function taskParse(e){
+function taskParse(){
     if(task.length <4){
         alert (`Слов должно быть не меньше 4 и не больше 6`)
         return;
     }
-    console.log("Событие",e);
     uploadTask();
     setTask([]);
-    setTaskTitle('');
-    taskRef.current.value=null;
+    setTaskTitle(null);
+    taskTitleInput.current.value=null;
+    taskInput.current.value=null;
 }
 
 function onTaskChange ({target:{value}}) {
@@ -48,23 +49,31 @@ function onTaskChange ({target:{value}}) {
 
     return (
             <Container>
-                <Row className="justify-content-md-center">
-                    <Col xs={12} sm={10} md={8} lg={7}>
-                        <Form.Group className="mb-3" controlId="formTitle">
-                          <Form.Label>Введите название вопроса</Form.Label>
-                          <Form.Control type="text" size="lg" onChange={e=> setTaskTitle(e.target.value)} value={taskTitle}/>
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formWords"  >
-                          <Form.Label>Введите фразу длиной 4 - 6 слов</Form.Label>
-                          <Form.Control type="text" size="lg" onChange={e=>onTaskChange(e)} ref={taskRef}/>
-                          <Form.Text className="text-muted h4">
-                            {!!task.length && <p>{task.join(' ')}</p> }
-                          </Form.Text>
-                        </Form.Group>
-                        <Button variant="primary" type="submit" onClick={(e)=>taskParse(e)}>
-                          Записать <i class="bi bi-save2"></i>
+                <Row className="justify-content-sm-center">
+                    <Form.Label>Впишите заголовок задания</Form.Label>
+                    <InputGroup className="mb-3">
+                        <FormControl
+                        onChange={()=>setTaskTitle(taskTitleInput.current.value)}
+                        ref={taskTitleInput}
+                        />
+                        </InputGroup>
+                        <Form.Label>Впишите фразу из 4 - 6 слов</Form.Label>
+                        <InputGroup className="mb-3">
+                        <FormControl
+                          aria-label="Example text with button addon"
+                          aria-describedby="basic-addon1"
+                          ref={taskInput}
+                          onChange={e=>onTaskChange(e)}
+                          />
+                          <br/>
+                    </InputGroup>
+                    <Button className="mx-3" variant="info" id="button-addon1" onClick={taskParse} >
+                          Записать
                         </Button>
-                    </Col>
+                    <div>
+                        <h6>Заголовок : <span className="text-muted">{taskTitle}</span></h6>
+                        <h6>Фраза : <span className="text-muted">{task.join(' ')}</span></h6>
+                    </div>
                 </Row>  
             </Container>
     );
