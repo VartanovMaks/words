@@ -28,7 +28,7 @@ function App() {
                 <Route path='/rules'>
                   <GameRules />
                 </Route>
-                <Route path='/create-game'>
+                <Route path='/create-task'>
                   <GameCreate />
                 </Route>
                 <Route>

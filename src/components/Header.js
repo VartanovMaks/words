@@ -12,7 +12,7 @@ function Header() {
       <header>
         <h3 className="text-center my-3"> Игра 5 слов</h3>
         <Container className="mb-3">
-            <Row className="justify-content-around">
+            <Row className="d-flex justify-content-around">
                 <Col md="auto" sm="auto">
                     <Link to='/select-game'>
                         <Button variant="primary" className="mx-2 my-2">Выбрать игру</Button>
@@ -23,7 +23,7 @@ function Header() {
                     <Link to='/rules'>
                         <Button variant="info" className="mx-2 my-2">Правила игры</Button>
                     </Link>
-                    <Link to='/create-game'>
+                    <Link to='/create-task'>
                         <Button variant="success" className="mx-2 my-2">Создать игру</Button>
                     </Link>
                 </Col>
