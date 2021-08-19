@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Container,InputGroup, Button, FormControl, Form } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 
-function GameCreate() {
+function TaskCreate() {
 
 const taskTitleInput=useRef();
 const taskInput=useRef();
@@ -23,8 +23,7 @@ const uploadTask = async () => {
                 'Content-Type': 'application/json',
             }
         });
-        let result = await response.json();
-        console.log(JSON.stringify(result));
+        if (response.status === 200 ) alert(`Задание записано \n Заголовок: ${taskToUpload.task} \n Фраза :${taskToUpload.words.join(' ')}`);
     } catch (error) {
         console.log('Ошибка', error);
     }
@@ -51,7 +50,7 @@ function onTaskChange ({target:{value}}) {
             <Container>
                 <Row className="justify-content-sm-center">
                     <Form.Label>Впишите заголовок задания</Form.Label>
-                    <InputGroup className="mb-3">
+                    <InputGroup className="mb-3" col={6}>
                         <FormControl
                         onChange={()=>setTaskTitle(taskTitleInput.current.value)}
                         ref={taskTitleInput}
@@ -60,14 +59,12 @@ function onTaskChange ({target:{value}}) {
                         <Form.Label>Впишите фразу из 4 - 6 слов</Form.Label>
                         <InputGroup className="mb-3">
                         <FormControl
-                          aria-label="Example text with button addon"
-                          aria-describedby="basic-addon1"
                           ref={taskInput}
                           onChange={e=>onTaskChange(e)}
                           />
                           <br/>
                     </InputGroup>
-                    <Button className="mx-3" variant="info" id="button-addon1" onClick={taskParse} >
+                    <Button className="mx-3" variant="info" onClick={taskParse} >
                           Записать
                         </Button>
                     <div>
@@ -79,4 +76,4 @@ function onTaskChange ({target:{value}}) {
     );
 }
 
-export default GameCreate;
+export default TaskCreate;

@@ -2,11 +2,12 @@ import './App.css';
 import Body from './components/Body';
 import Footer from './components/Footer';
 import GameRules from './components/GameRules'
-import GameCreate from './components/GameCreate'
+import TaskCreate from './components/TaskCreate'
 import SelectGame from './components/SelectGame'
 import Header from './components/Header';
 import GameContextProvider from './components/ContextComponent'
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import TaskList from './components/TaskList';
 
 function App() {
   
@@ -29,7 +30,8 @@ function App() {
                   <GameRules />
                 </Route>
                 <Route path='/create-task'>
-                  <GameCreate />
+                  <TaskCreate />
+                  <TaskList/>
                 </Route>
                 <Route>
                   <Redirect to='/select-game' />

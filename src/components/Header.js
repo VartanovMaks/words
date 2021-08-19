@@ -24,7 +24,7 @@ function Header() {
                         <Button variant="info" className="mx-2 my-2">Правила игры</Button>
                     </Link>
                     <Link to='/create-task'>
-                        <Button variant="success" className="mx-2 my-2">Создать игру</Button>
+                        <Button variant="success" className="mx-2 my-2">Записать задание</Button>
                     </Link>
                 </Col>
             </Row>
