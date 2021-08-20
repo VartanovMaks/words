@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container,InputGroup, Button, Col, Row } from 'react-bootstrap';
+import {Col, Row } from 'react-bootstrap';
 import {Link, Switch, Route, Redirect, useRouteMatch} from 'react-router-dom';
 import TaskCreate from './TaskCreate';
 import TaskList from './TaskList';
@@ -10,8 +10,7 @@ function BaseMenu(props) {
     return (
         <Row className="justify-content-md-center">
             <Col md={2}>    
-        <div className="my-5 mx-5">
-            <ul>
+            <ul className="my-5 mx-5">
                 <li className="my-5">
                   <Link to={`${url}/games-list`}>Список игр</Link>
                 </li>
@@ -22,11 +21,8 @@ function BaseMenu(props) {
                   <Link to={`${url}/task-create`} >Записать задание</Link>
                 </li>
             </ul>
-        </div>
-        </Col>
-        <Col md={5}>
-        <div className="mx-5">
-            
+            </Col>
+            <Col md={5}>
                 <Switch>
                     <Route exact path={`${path}/games-list`}>
                       <div>games-list </div>    
@@ -39,9 +35,8 @@ function BaseMenu(props) {
                     </Route>
                     <Redirect to="/base" />
                 </Switch>
-        </div>
-        </Col>
-            </Row>
+            </Col>
+        </Row>
     );
 }
 
