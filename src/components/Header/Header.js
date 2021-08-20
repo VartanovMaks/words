@@ -23,8 +23,8 @@ function Header() {
                     <Link to='/rules'>
                         <Button variant="info" className="mx-2 my-2">Правила игры</Button>
                     </Link>
-                    <Link to='/create-task'>
-                        <Button variant="success" className="mx-2 my-2">Записать задание</Button>
+                    <Link to='/base'>
+                        <Button variant="success" className="mx-2 my-2">База данных</Button>
                     </Link>
                 </Col>
             </Row>

@@ -3,6 +3,7 @@ import Body from './components/Body/Body';
 import Footer from './components/Footer/Footer';
 import GameRules from './components/Rules/GameRules'
 import TaskCreate from './components/baseComponents/TaskCreate'
+import BaseMenu from './components/baseComponents/BaseMenu'
 import SelectGame from './components/Game/SelectGame'
 import Header from './components/Header/Header';
 import GameContextProvider from './components/ContextComponent'
@@ -29,9 +30,8 @@ function App() {
                 <Route path='/rules'>
                   <GameRules />
                 </Route>
-                <Route path='/create-task'>
-                  <TaskCreate />
-                  <TaskList/>
+                <Route path='/base'>
+                  <BaseMenu/>
                 </Route>
                 <Route>
                   <Redirect to='/select-game' />

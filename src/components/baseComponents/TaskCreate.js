@@ -48,9 +48,9 @@ function onTaskChange ({target:{value}}) {
 
     return (
             <Container>
-                <Row className="justify-content-sm-center">
+                <Row className="justify-content-md-center">
                     <Form.Label>Впишите заголовок задания</Form.Label>
-                    <InputGroup className="mb-3" col={6}>
+                    <InputGroup className="mb-3" >
                         <FormControl
                         onChange={()=>setTaskTitle(taskTitleInput.current.value)}
                         ref={taskTitleInput}
@@ -64,6 +64,8 @@ function onTaskChange ({target:{value}}) {
                           />
                           <br/>
                     </InputGroup>
+                </Row>  
+                <Row className="justify-content-md-start">
                     <Button className="mx-3" variant="info" onClick={taskParse} >
                           Записать
                         </Button>
@@ -71,7 +73,7 @@ function onTaskChange ({target:{value}}) {
                         <h6>Заголовок : <span className="text-muted">{taskTitle}</span></h6>
                         <h6>Фраза : <span className="text-muted">{task.join(' ')}</span></h6>
                     </div>
-                </Row>  
+                </Row>    
             </Container>
     );
 }
