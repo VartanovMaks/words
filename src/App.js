@@ -1,13 +1,13 @@
 import './App.css';
-import Body from './components/Body';
-import Footer from './components/Footer';
-import GameRules from './components/GameRules'
-import TaskCreate from './components/TaskCreate'
-import SelectGame from './components/SelectGame'
-import Header from './components/Header';
+import Body from './components/Body/Body';
+import Footer from './components/Footer/Footer';
+import GameRules from './components/Rules/GameRules'
+import TaskCreate from './components/baseComponents/TaskCreate'
+import SelectGame from './components/Game/SelectGame'
+import Header from './components/Header/Header';
 import GameContextProvider from './components/ContextComponent'
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
-import TaskList from './components/TaskList';
+import TaskList from './components/baseComponents/TaskList';
 
 function App() {
   

@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
-import {GameContext} from './ContextComponent';
+import {GameContext} from '../../components/ContextComponent';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import './stylesCards.css'
+import '../stylesCards.css'
 
 function SelectTask() {
     const {

@@ -1,5 +1,5 @@
 import React, {useEffect, useContext} from 'react';
-import {GameContext} from './ContextComponent';
+import {GameContext} from '../ContextComponent';
 import {Row,Col, Container, Form} from 'react-bootstrap';
 import Game from './Game';
 

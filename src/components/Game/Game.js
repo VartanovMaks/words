@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {GameContext} from './ContextComponent';
+import {GameContext} from '../ContextComponent';
 
 import {Form} from 'react-bootstrap'
 

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {GameContext} from './ContextComponent';
+import {GameContext} from '../../components/ContextComponent';
 
 function Word ({word,index}) {
 
