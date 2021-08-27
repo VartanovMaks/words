@@ -25,3 +25,10 @@
     max-height: 400px;
     overflow: scroll;
 }
+.table-cell{
+    background-color: chartreuse;
+}
+.task-item {
+    display:flex;
+    flex-direction: row;
+}
