@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Container, Button,ListGroup, Col } from 'react-bootstrap';
+import {Container, ListGroup} from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
+import TaskItem from './TaskItem';
+import SaveGame from './SaveGame';
 
 function TaskList() {
 
     const [tasks, setTasks]=useState([]);
     const [counter, setCounter]= useState(0);
-
     const [selectedTaskIndexes, setSelectedTaskIndexes]=useState([]);
 
 const fetchAllTasks = async () => {
@@ -23,25 +24,13 @@ const fetchAllTasks = async () => {
   useEffect(() => {
     fetchAllTasks();
   },[]);
-
-  const onSaveGame = () =>{
-    let gameName = prompt ("Введите название игры");
-    if (gameName == null) return
-    let array=[];
-    setSelectedTaskIndexes(array);
-    setCounter(0);
-  }
-
-  const onButtonClick = (e) => {
-      let taskIndex=Number(e.target.id);
+  
+  const onButtonClick = (taskIndex) => {
       let index = selectedTaskIndexes.findIndex(item => item === taskIndex);
       if (index > -1){
           let arr = selectedTaskIndexes;
           arr.splice(index, 1);
           setSelectedTaskIndexes(arr);
-          e.target.innerText = "Select";
-          const tmpStyle={...e.target.style, backgroundColor:"#FFFFFF" }
-          e.target.style=tmpStyle;
           setCounter(prev=>prev-1);
         } else {
             let arr = selectedTaskIndexes;
@@ -51,33 +40,37 @@ const fetchAllTasks = async () => {
             arr.push(taskIndex);
             setSelectedTaskIndexes(arr);
             setCounter(prev=>prev+1);
-            e.target.innerText = "Selected"
-            e.target.style.backgroundColor="#12EE5B";
         }
   }
+
+  function resetState(){
+    
+    setSelectedTaskIndexes([]);
+    setCounter(0);
+  }
+  console.log("rerender TaskList")
 
     return (
         <Container>
         <Row className="justify-content-md-start">
-            <Button variant="info" className="my-1 mx-3" onClick={onSaveGame}>Записать игру</Button>
-            <h5>Выбрано {counter} заданий</h5>
+            <SaveGame 
+                tasks={tasks}
+                selectedTaskIndexes={selectedTaskIndexes}
+                counter={counter} 
+                propsHoisting = {resetState}    
+            />
         </Row>
         <Row className="justify-content-sm-center mt-2">
             <ListGroup className="tasks-list">
-                {tasks.map((item,index)=>(
-                    <div className="task-item" key={index}>
-                        <Button variant={index % 2 ? "outline-info":"outline-secondary"} 
-                                id={index} 
-                                onClick={onButtonClick}
-                        >
-                            Select
-                        </Button>
-                        <ListGroup.Item action  variant={index % 2 ? "info":"secondary"}>
-                            <h5 className="my-0">Задание: {item.task}</h5>
-                            <p className="my-0"> Фраза : {item.words.join(' ')}</p>
-                        </ListGroup.Item>
-                    </div>
-                ))}
+                {tasks.map((item,index)=>
+                    <TaskItem 
+                        key={index}
+                        index={index} 
+                        item={item} 
+                        selectedTaskIndexes={selectedTaskIndexes}
+                        propsHoisting={onButtonClick}
+                    />
+                )}
             </ListGroup>
         </Row>
         </Container>
