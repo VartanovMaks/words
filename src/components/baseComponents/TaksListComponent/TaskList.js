@@ -25,7 +25,11 @@ const fetchAllTasks = async () => {
   },[]);
 
   const onSaveGame = () =>{
-    prompt (" записываем игру");
+    let gameName = prompt ("Введите название игры");
+    if (gameName == null) return
+    let array=[];
+    setSelectedTaskIndexes(array);
+    setCounter(0);
   }
 
   const onButtonClick = (e) => {
@@ -62,11 +66,16 @@ const fetchAllTasks = async () => {
             <ListGroup className="tasks-list">
                 {tasks.map((item,index)=>(
                     <div className="task-item" key={index}>
-                        <Button variant={index % 2 ? "outline-info":"outline-secondary"} id={index} onClick={onButtonClick}>Select</Button>
-                    <ListGroup.Item action  variant={index % 2 ? "info":"secondary"}>
-                        <h5 className="my-0">Задание: {item.task}</h5>
-                        <p className="my-0"> Фраза : {item.words.join(' ')}</p>
-                    </ListGroup.Item>
+                        <Button variant={index % 2 ? "outline-info":"outline-secondary"} 
+                                id={index} 
+                                onClick={onButtonClick}
+                        >
+                            Select
+                        </Button>
+                        <ListGroup.Item action  variant={index % 2 ? "info":"secondary"}>
+                            <h5 className="my-0">Задание: {item.task}</h5>
+                            <p className="my-0"> Фраза : {item.words.join(' ')}</p>
+                        </ListGroup.Item>
                     </div>
                 ))}
             </ListGroup>

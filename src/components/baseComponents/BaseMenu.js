@@ -2,7 +2,7 @@ import React from 'react';
 import {Col, Row } from 'react-bootstrap';
 import {Link, Switch, Route, Redirect, useRouteMatch} from 'react-router-dom';
 import TaskCreate from './TaskCreate';
-import TaskList from './TaskList';
+import TaskList from './TaksListComponent/TaskList';
 
 function BaseMenu(props) {
     let { path, url } = useRouteMatch();
