@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {Container, ListGroup} from 'react-bootstrap';
-import Row from 'react-bootstrap/Row';
+import {Container, ListGroup, Row} from 'react-bootstrap';
 import TaskItem from './TaskItem';
 import SaveGame from './SaveGame';
+import {BTN_SELECT} from '../Constants'
 
 function TaskList() {
 
@@ -48,7 +48,6 @@ const fetchAllTasks = async () => {
     setSelectedTaskIndexes([]);
     setCounter(0);
   }
-  console.log("rerender TaskList")
 
     return (
         <Container>
@@ -69,6 +68,7 @@ const fetchAllTasks = async () => {
                         item={item} 
                         selectedTaskIndexes={selectedTaskIndexes}
                         propsHoisting={onButtonClick}
+                        btnOptions={BTN_SELECT}
                     />
                 )}
             </ListGroup>
